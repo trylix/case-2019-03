@@ -1,0 +1,44 @@
+version: "3"
+
+services:
+  db:
+    image: postgres
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: vitta
+
+  api:
+    build:
+      context: challenge-backend
+      dockerfile: ./docker/dev/Dockerfile
+    ports:
+      - "8090:8090"
+    environment:
+      POSTGRES_URL: postgresql://postgres:postgres@db:5432/vitta
+      PORT: 8090
+    volumes:
+      - ./challenge-backend:/usr/src
+      - ./challenge-backend/node_modules:/usr/src/node_modules
+    depends_on:
+      - db
+    command: yarn start:dev
+
+  web:
+    build:
+      context: challenge-frontend
+      dockerfile: ./docker/dev/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      PORT: 8080
+      API_URL: api:8090
+    volumes:
+      - ./challenge-frontend:/usr/src
+      - ./challenge-frontend/node_modules:/usr/src/node_modules
+    depends_on:
+      - api
+    command: yarn start
