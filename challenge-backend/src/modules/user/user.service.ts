@@ -109,8 +109,10 @@ export class UserService {
 
       const user = this.userRepo.create(userDto);
 
-      user.createdAt = moment().unix();
-      user.updatedAt = moment().unix();
+      const now = moment().unix();
+
+      user.createdAt = now;
+      user.updatedAt = now;
 
       const createdUser = await this.userRepo.save(user);
 

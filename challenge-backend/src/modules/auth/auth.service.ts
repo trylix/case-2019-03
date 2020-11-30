@@ -13,7 +13,7 @@ export class AuthService {
     private readonly jwtService: JwtService,
   ) {}
 
-  private readonly logger = new Logger('user.service');
+  private readonly logger = new Logger('auth.service');
 
   async login({ email, password }: LoginDto): Promise<TokenDto> {
     try {

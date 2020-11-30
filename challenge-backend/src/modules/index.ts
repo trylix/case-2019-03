@@ -5,6 +5,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { HttpExceptionFilter } from 'src/filters/http-exception.filter';
 import { AuthModule } from 'src/modules/auth/auth.module';
 import { HealthModule } from 'src/modules/health/health.module';
+import { MedicationModule } from 'src/modules/medication/medication.module';
+import { PrescriptionModule } from 'src/modules/prescription/prescription.module';
 import { UserModule } from 'src/modules/user/user.module';
 
 @Module({
@@ -14,6 +16,8 @@ import { UserModule } from 'src/modules/user/user.module';
     HealthModule,
     UserModule,
     AuthModule,
+    MedicationModule,
+    PrescriptionModule,
   ],
   controllers: [],
   providers: [

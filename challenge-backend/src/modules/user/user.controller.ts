@@ -45,7 +45,7 @@ export class UserController {
   @Get()
   @ApiOkResponse({
     description: 'Returns information for all users',
-    type: UserResponseDto,
+    type: UserFetchResponseDto,
   })
   @ApiUnauthorizedResponse({ description: 'Unauthorized' })
   @ApiBearerAuth('access-token')

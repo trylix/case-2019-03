@@ -2,6 +2,7 @@ version: "3"
 
 services:
   db:
+    container_name: vitta_database
     image: postgres
     restart: unless-stopped
     ports:
@@ -12,6 +13,7 @@ services:
       POSTGRES_DB: vitta
 
   api:
+    container_name: vitta_api
     build:
       context: challenge-backend
       dockerfile: ./docker/dev/Dockerfile
@@ -24,11 +26,13 @@ services:
     volumes:
       - ./challenge-backend:/usr/src
       - ./challenge-backend/node_modules:/usr/src/node_modules
+      - ./challenge-backend/dados:/usr/src/dados
     depends_on:
       - db
     command: yarn start:dev
 
   web:
+    container_name: vitta_web
     build:
       context: challenge-frontend
       dockerfile: ./docker/dev/Dockerfile

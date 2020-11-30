@@ -5,6 +5,7 @@ import * as helmet from 'helmet';
 
 import envsConfig from './config/envs.config';
 import { AppModule } from './modules';
+import { dbSeeds } from './shared/utils';
 
 const port = envsConfig().port;
 const isProd = envsConfig().env === 'production';
@@ -41,6 +42,8 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, swaggerOptions);
 
   SwaggerModule.setup('/swagger', app, document);
+
+  await dbSeeds();
 
   await app.listen(port, '0.0.0.0', async () => {
     Logger.log(
