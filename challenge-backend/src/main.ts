@@ -42,7 +42,7 @@ async function bootstrap() {
 
   SwaggerModule.setup('/swagger', app, document);
 
-  await app.listen(3000, '0.0.0.0', async () => {
+  await app.listen(port, '0.0.0.0', async () => {
     Logger.log(
       `Listening on port ${port} on ${await app.getUrl()} as ${
         envsConfig().env

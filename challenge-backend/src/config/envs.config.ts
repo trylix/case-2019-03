@@ -1,8 +1,8 @@
 export default () => ({
   port: process.env.PORT || 8080,
   env: process.env.NODE_ENV,
-  database: {
-    url: process.env.POSTGRES_URL,
-    synchronize: process.env.NODE_ENV === 'development',
+  auth: {
+    expires: process.env.JWT_EXPIRES,
+    secret: process.env.JWT_SECRET,
   },
 });

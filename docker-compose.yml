@@ -17,9 +17,10 @@ services:
       dockerfile: ./docker/dev/Dockerfile
     ports:
       - "8090:8090"
+    env_file:
+      - ./challenge-backend/.env
     environment:
-      POSTGRES_URL: postgresql://postgres:postgres@db:5432/vitta
-      PORT: 8090
+      TYPEORM_HOST: db
     volumes:
       - ./challenge-backend:/usr/src
       - ./challenge-backend/node_modules:/usr/src/node_modules
