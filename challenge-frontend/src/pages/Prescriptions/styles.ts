@@ -1,56 +1,33 @@
-import * as antd from 'antd';
 import styled from 'styled-components';
 
-import vittaIcon from '../../assets/images/icon.png';
-
 export const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-template-rows: 1fr;
-  place-items: center;
-
-  & > * {
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-  }
-`;
-
-export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  width: 100%;
 `;
 
-export const Brand = styled.div`
-  margin-bottom: 18px;
+export const PageHeader = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  margin: 16px 0;
+  width: 100%;
 `;
 
-export const Logo = styled.img.attrs({
-  src: vittaIcon,
-})`
-  height: auto;
-  width: 80px;
-`;
+export const FormField = styled.div`
+  padding: 0px 10px;
 
-export const Form = styled(antd.Form)`
-  width: 300px;
-`;
+  &:nth-child(odd) {
+    background-color: #f1f1f1;
+  }
 
-export const Input = styled(antd.Input)`
-  padding: 8px 12px;
-
-  .form-icon {
-    margin-right: 8px;
+  &:nth-child(even) {
+    background-color: #f7f7f7;
   }
 `;
 
-export const Button = styled(antd.Button)`
+export const FieldRemove = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  padding: 12px 0;
   width: 100%;
-  height: auto;
-  padding: 8px 12px;
 `;

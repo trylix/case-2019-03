@@ -21,7 +21,7 @@ export class AuthService {
 
       if (!user) {
         throw new HttpException(
-          'Email is already in use',
+          'No users with this email were found',
           HttpStatus.NOT_FOUND,
         );
       }
